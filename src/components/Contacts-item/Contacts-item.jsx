@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Button} from 'components/Button';
 import s from './Contacts-item.module.css';
 
-export const ContactsItem = ({ name, number, deleteHandler }) => {
+export const ContactsItem = ({ name, phone, deleteHandler }) => {
   const onItemHover = e => {
     e.currentTarget.classList.toggle(s.focus);
   };
@@ -15,7 +15,7 @@ export const ContactsItem = ({ name, number, deleteHandler }) => {
       className={s.item}
     >
       <span className={s.name}>{name}:</span>
-      <span className={s.num}>{number}</span>
+      <span className={s.num}>{phone}</span>
       <Button dlt type="button" onClickHandler={deleteHandler}>
         Delete
       </Button>
@@ -25,6 +25,6 @@ export const ContactsItem = ({ name, number, deleteHandler }) => {
 
 ContactsItem.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   deleteHandler: PropTypes.func.isRequired,
 };
