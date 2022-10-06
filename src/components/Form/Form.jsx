@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { nanoid } from 'nanoid';
-import { addContact } from 'redux/contacts/contacts.slice';
-import s from './Form.module.css';
+import { addContact } from 'redux/operations';
 import {Button} from 'components/Button';
+import s from './Form.module.css';
 
 export const Form = () => {
   const [name, setName] = useState('');
@@ -20,13 +19,13 @@ export const Form = () => {
         setNumber(e.target.value);
         break;
       default:
-        throw new Error('Not valid value');
+        console.log(e.target.value + "is not a valid value");
     }
   };
 
   const onFormSubmit = e => {
     e.preventDefault();
-    const newContact = { id: nanoid(), name, number };
+    const newContact = { name, number };
     
     if (contacts.some(({ name }) => name === newContact.name)) {
       alert(`${newContact.name} is already in contacts!`);

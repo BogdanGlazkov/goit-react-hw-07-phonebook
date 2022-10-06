@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contacts.slice';
-import {ContactsItem} from 'components/Contacts-item';
+import { fetchContacts, deleteContact } from 'redux/operations';
+import { ContactsItem } from 'components/Contacts-item';
 import s from './Contacts-list.module.css';
 
 export const ContactsList = () => {
-  const contacts = useSelector(state => state.contacts, shallowEqual);
+  const contacts = useSelector(state => state.contacts.items, shallowEqual);
   const filter = useSelector(state => state.filter, shallowEqual);
   const dispatch = useDispatch();
 
@@ -15,11 +15,15 @@ export const ContactsList = () => {
     }) : [];
   }, [contacts, filter]);
 
-  const elements = filteredContacts.map(({ id, name, number }) => (
+  useEffect(() => {
+    dispatch(fetchContacts())
+  }, [dispatch]);
+
+  const elements = filteredContacts.map(({ id, name, phone }) => (
     <ContactsItem
       key={id}
       name={name}
-      number={number}
+      phone={phone}
       deleteHandler={() => dispatch(deleteContact(id))}
     />
   ));
