@@ -3,9 +3,10 @@ import { ContactsList } from "./Contacts-list/Contacts-list";
 import { Form } from "./Form";
 import { Filter } from "./Filter";
 import { Section } from './Section';
+import { ThreeDots } from 'react-loader-spinner';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts, shallowEqual);
+  const isLoading = useSelector(state => state.contacts.isLoading, shallowEqual);
 
   return (
     <div>
@@ -15,14 +16,9 @@ export const App = () => {
       </Section>
       <Section>
         <h2>Contacts</h2>
-        {contacts.length > 0 ? (
-          <>
+        {isLoading && <ThreeDots wrapperClass="loader" color="black" width="100" /> }
             <Filter />
             <ContactsList />
-          </>
-        ) : (
-          <p>There are no contacts here. You can add a new one above.</p>
-        )}
       </Section>
     </div>
   );
