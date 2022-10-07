@@ -1,9 +1,10 @@
 import { useSelector, shallowEqual } from "react-redux";
+import { ThreeDots } from 'react-loader-spinner';
 import { ContactsList } from "./Contacts-list/Contacts-list";
 import { Form } from "./Form";
 import { Filter } from "./Filter";
 import { Section } from './Section';
-import { ThreeDots } from 'react-loader-spinner';
+import s from './Section/Section.module.css';
 
 export const App = () => {
   const isLoading = useSelector(state => state.contacts.isLoading, shallowEqual);
@@ -16,7 +17,7 @@ export const App = () => {
       </Section>
       <Section>
         <h2>Contacts</h2>
-        {isLoading && <ThreeDots wrapperClass="loader" color="black" width="100" /> }
+        {isLoading && <ThreeDots wrapperClassName={s.loader} width="100" /> }
             <Filter />
             <ContactsList />
       </Section>

@@ -14,7 +14,7 @@ body {
     --primary-text-color: black;
     --secondary-text-color: gray;
     --btn-color: whitesmoke;
-    ;
+    background-color: var(--btn-color);
 
     --transition: 300ms ease-in-out;
   }
@@ -55,9 +55,10 @@ h1 {
 }
 
 h2 {
-  padding-bottom: 15px;
+  padding-bottom: 20px;
+  text-decoration: underline;
+  font-size: 25px;
 }
-
 button {
   cursor: pointer;
 }

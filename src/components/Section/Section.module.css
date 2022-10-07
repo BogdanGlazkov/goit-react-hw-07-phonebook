@@ -2,9 +2,15 @@
     width: 60%;
     margin: 20px auto;
     padding: 30px;
+    text-align: center;
 
     border: 1px solid var(--accent-color);
     background-color: var(--primary-bg-color);
     border-radius: 5px;
     box-shadow: 0 0 4px 4px #18622c;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
 }
